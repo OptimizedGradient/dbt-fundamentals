@@ -11,8 +11,8 @@ sources:
         # Set up payment table
       - name: payment
         identifier: "payment"
-        loaded_at_field: _batched_at
         # Set Source Freshness for orders table
+        loaded_at_field: _batched_at
         freshness:
             warn_after: {count: 12, period: hour}
             error_after: {count: 24, period: hour}
