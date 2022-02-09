@@ -11,6 +11,29 @@ sources:
         # Set up payment table
       - name: payment
         identifier: "payment"
+        # Set up some src tests
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          - name: orderid
+            tests:
+              - not_null
+          - name: status
+            tests:
+              - accepted_values:
+                  values:
+                    - success
+                    - fail
+          - name: paymentmethod
+            tests:
+              - accepted_values:
+                  values:
+                    - credit_card
+                    - coupon
+                    - bank_transfer
+                    - gift_card
         # Set Source Freshness for orders table
         loaded_at_field: _batched_at
         freshness:
