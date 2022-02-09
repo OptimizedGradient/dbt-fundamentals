@@ -11,10 +11,22 @@ sources:
         # Set up customers table
       - name: customers
         identifier: "customers"
+        # Set up generic tests for src data
+        columns:
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      
         # Set up orders table
       - name: orders
         identifier: "orders"
-        # specify column
+        # Set up generic tests for src data
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
         # Set Source Freshness for orders table
         loaded_at_field: _etl_loaded_at
         freshness:
