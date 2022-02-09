@@ -2,19 +2,16 @@ version: 2
 
 sources:
     # Name source
-  - name: jaffle_shop
+  - name: stripe
     # Set Context
     database: raw
-    schema: jaffle_shop
+    schema: stripe
     # Set Tables
     tables:
-        # Set up customers table
-      - name: customers
-        identifier: "customers"
-        # Set up orders table
-      - name: orders
-        identifier: "orders"
-        loaded_at_field: _etl_loaded_at
+        # Set up payment table
+      - name: payment
+        identifier: "payment"
+        loaded_at_field: _batched_at
         # Set Source Freshness for orders table
         freshness:
             warn_after: {count: 24, period: hour}

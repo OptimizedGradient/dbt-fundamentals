@@ -5,4 +5,4 @@ SELECT id AS payment_id,
        -- amount are in cents
        amount/100 AS amount,
        created AS created_at
-  FROM raw.stripe.payment
+  FROM {{ source('stripe', 'payment') }}
