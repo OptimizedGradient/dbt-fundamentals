@@ -1,0 +1,39 @@
+version: 2
+
+models:
+    # stg_payments model
+  - name: stg_payments
+    description: Staged payments info from stripe.
+    columns:
+        # payment_id tests
+      - name: payment_id
+        description: Primary key for the payments.
+        tests:
+          - unique
+          - not_null
+        # order_id tests
+      - name: order_id
+        description: Foreign key to stg_orders.order_id.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+        # status tests
+      - name: status
+        description: "{{ doc('payment_status') }}"
+        tests:
+          - accepted_values:
+              values:
+                - success
+                - fail
+        # paymentmethod tests
+      - name: paymentmethod
+        description: "{{ doc('payment_method') }}"
+        tests:
+          - accepted_values:
+              values:
+                - credit_card
+                - coupon
+                - bank_transfer
+                - gift_card
