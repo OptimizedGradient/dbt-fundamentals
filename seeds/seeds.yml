@@ -8,3 +8,10 @@ seeds:
         tests:
           - unique
           - not_null
+  - name: employees_w_email
+    description: A manual map of employees to customers
+    columns:
+      - name: employee_id
+        tests:
+          - unique
+          - not_null
