@@ -3,6 +3,7 @@ version: 2
 sources:
     # Name source
   - name: jaffle_shop
+    description: A clone of a Postgres application database.
     # Set Context
     database: raw
     schema: jaffle_shop
@@ -11,9 +12,11 @@ sources:
         # Set up customers table
       - name: customers
         identifier: "customers"
+        description: Raw customers data.
         # Set up generic tests for src data
         columns:
           - name: id
+            description: Primary key for customers.
             tests: 
               - unique
               - not_null
@@ -21,9 +24,11 @@ sources:
         # Set up orders table
       - name: orders
         identifier: "orders"
+        description: Raw orders data.
         # Set up generic tests for src data
         columns:
           - name: id
+            description: Primary key for orders.
             tests:
               - unique
               - not_null
