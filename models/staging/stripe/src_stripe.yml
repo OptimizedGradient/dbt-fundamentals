@@ -3,6 +3,7 @@ version: 2
 sources:
     # Name source
   - name: stripe
+    description: A clone of our stripe payment data.
     # Set Context
     database: raw
     schema: stripe
@@ -11,22 +12,27 @@ sources:
         # Set up payment table
       - name: payment
         identifier: "payment"
+        description: Raw payment data
         # Set up some src tests
         columns:
           - name: id
+            description: Primary key for payments
             tests:
               - unique
               - not_null
           - name: orderid
+            description: Foreign key to the customer data
             tests:
               - not_null
           - name: status
+            description: "{{ doc('payment_status') }}"
             tests:
               - accepted_values:
                   values:
                     - success
                     - fail
           - name: paymentmethod
+            description: "{{ doc('payment_method') }}"
             tests:
               - accepted_values:
                   values:
